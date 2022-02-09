@@ -18,9 +18,10 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
     <Overlay isOpen={isOpen} onDismiss={onDismiss}>
       <Content>
         <ModalHeader>
-          <CloseButton onClick={onDismiss}>
+          <UnstyledButton onClick={onDismiss}>
             <Icon id="close" strokeWidth={2} />
-          </CloseButton>
+            <VisuallyHidden>Close Modal</VisuallyHidden>
+          </UnstyledButton>
         </ModalHeader>
         <MobileNavMenus>
           <MobileNavLink href="/sale">Sale</MobileNavLink>

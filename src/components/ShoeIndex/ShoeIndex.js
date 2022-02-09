@@ -14,14 +14,16 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
-          <MobileBreadcrumbs>
-            <Breadcrumbs>
-              <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-              <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-              <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
-            </Breadcrumbs>
-          </MobileBreadcrumbs>
-          <Title>Running</Title>
+          <TitleContainer>
+            <MobileBreadcrumbs>
+              <Breadcrumbs>
+                <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+                <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+                <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
+              </Breadcrumbs>
+            </MobileBreadcrumbs>
+            <Title>Running</Title>
+          </TitleContainer>
           <Select
             label="Sort"
             value={sortId}
@@ -64,11 +66,11 @@ const LeftColumn = styled.div`
 const MobileBreadcrumbs = styled.div`
   display: none;
   @media ${QUERIES.tabletAndUnder} {
-    display: block;
-    position: absolute;
-    top: -1.5rem;
+    display: revert;
   }
 `;
+
+const TitleContainer = styled.div``;
 
 const MainColumn = styled.div`
   flex: 1;
@@ -79,6 +81,9 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: baseline;
   position: relative;
+  @media ${QUERIES.tabletAndUnder} {
+    align-items: center;
+  }
 `;
 
 const Title = styled.h2`

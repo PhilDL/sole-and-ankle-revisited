@@ -5,6 +5,8 @@ import { WEIGHTS, QUERIES } from "../../constants";
 import Logo from "../Logo";
 import SuperHeader from "../SuperHeader";
 import MobileMenu from "../MobileMenu";
+import VisuallyHidden from "../VisuallyHidden";
+import UnstyledButton from "../UnstyledButton";
 import Icon from "../Icon";
 
 const Header = () => {
@@ -22,25 +24,28 @@ const Header = () => {
         <Side>
           <Logo />
         </Side>
-        <Nav>
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-        </Nav>
+        </DesktopNav>
         <Side>
           <MobileNav>
-            <MobileNavLink>
+            <UnstyledButton>
               <Icon id="shopping-bag" strokeWidth={2} />
-            </MobileNavLink>
-            <MobileNavLink>
+              <VisuallyHidden>Cart</VisuallyHidden>
+            </UnstyledButton>
+            <UnstyledButton>
               <Icon id="search" strokeWidth={2} />
-            </MobileNavLink>
-            <MobileNavLink onClick={() => setShowMobileMenu(true)}>
+              <VisuallyHidden>Search</VisuallyHidden>
+            </UnstyledButton>
+            <UnstyledButton onClick={() => setShowMobileMenu(true)}>
               <Icon id="menu" strokeWidth={2} />
-            </MobileNavLink>
+              <VisuallyHidden>Open Menu</VisuallyHidden>
+            </UnstyledButton>
           </MobileNav>
         </Side>
       </MainHeader>
@@ -57,13 +62,23 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
+  height: auto;
   border-bottom: 1px solid var(--color-gray-300);
+  @media ${QUERIES.phoneAndUnder} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media ${QUERIES.tabletAndUnder} {
+    border-top: 4px solid var(--color-gray-900);
+    align-items: center;
+    justify-content: space-between;
+  }
+  overflow: auto;
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
-  gap: clamp(1.5rem, 1.3vw + 1rem, 3rem);
+  gap: clamp(1rem, 8.1vw - 4rem, 3rem);
   margin: 0px 48px;
   @media ${QUERIES.tabletAndUnder} {
     display: none;
@@ -84,8 +99,6 @@ const MobileNav = styled.nav`
     gap: 1rem;
   }
 `;
-
-const MobileNavLink = styled.a``;
 
 const Side = styled.div`
   flex: 1;
