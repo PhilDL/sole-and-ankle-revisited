@@ -18,10 +18,10 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
     <Overlay isOpen={isOpen} onDismiss={onDismiss}>
       <Content>
         <ModalHeader>
-          <UnstyledButton onClick={onDismiss}>
+          <CloseButton onClick={onDismiss}>
             <Icon id="close" strokeWidth={2} />
             <VisuallyHidden>Close Modal</VisuallyHidden>
-          </UnstyledButton>
+          </CloseButton>
         </ModalHeader>
         <MobileNavMenus>
           <MobileNavLink href="/sale">Sale</MobileNavLink>
@@ -49,16 +49,15 @@ const Overlay = styled(DialogOverlay)`
   bottom: 0;
   background: hsla(220, 5%, 40%, 0.8);
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 `;
 
 const Content = styled(DialogContent)`
   background: white;
   border: 1px solid var(--color-gray-300);
-  width: 100%;
+  width: 300px;
   height: 100%;
-  margin-left: 75px;
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -67,6 +66,7 @@ const Content = styled(DialogContent)`
 
 const ModalHeader = styled.footer`
   flex: 1;
+  position: relative;
 `;
 
 const ModalFooter = styled.footer`
@@ -74,7 +74,7 @@ const ModalFooter = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 14px;
+  gap: 8px;
 `;
 
 const FooterLink = styled.a`
@@ -82,16 +82,16 @@ const FooterLink = styled.a`
   text-decoration: none;
 `;
 
-const CloseButton = styled.a`
+const CloseButton = styled(UnstyledButton)`
   position: absolute;
-  top: 26px;
-  right: 16px;
+  top: 0px;
+  right: 0px;
 `;
 
 const MobileNavMenus = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 16px;
 `;
 
 const MobileNavLink = styled.a`
